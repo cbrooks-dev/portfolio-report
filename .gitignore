@@ -208,3 +208,8 @@ __marimo__/
 
 # CSV files
 *.csv
+*.CSV
+
+# JSON files
+*.json
+*.JSON
