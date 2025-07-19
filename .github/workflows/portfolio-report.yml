@@ -3,7 +3,7 @@ name: Portfolio Report
 # Schedule the workflow to run daily at 5 PM ET
 on:
   schedule:
-    - cron: '6 17 * * *'  # every day at 5 PM ET standard time (UTC-5)
+    - cron: '37 17 * * *'  # every day at 5 PM ET standard time (UTC-5)
   workflow_dispatch:   # also allows manual trigger
 
 jobs:
