@@ -7,13 +7,6 @@ class FileHandler():
 
     def __init__(self):
         pass
-
-
-    def read_json(file_path: str) -> dict:
-        """Convert generic JSON file to dictionary."""
-        
-        with open(f'{file_path}', 'r') as file:
-            return json.load(file)
         
     
     def read_portfolio_csv(file_path: str) -> dict:

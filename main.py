@@ -1,12 +1,17 @@
-from file_handler import FileHandler as FH
 from portfolio import Portfolio as P
 from emailer import Emailer as E
+from file_handler import FileHandler as FH
+import os, base64
 
-# Create a portfolio object
-json_config = FH.read_json("config.json")
-portfolio_file_name = json_config.get("csv_file_name")
-assets = FH.read_portfolio_csv(portfolio_file_name)
-portfolio = P(assets)
+# Decode and recreate csv file at runtime
+b64_data = os.environ["PORTFOLIO_B64"]
+decoded = base64.b64decode(b64_data)
+with open("portfolio.csv", "wb") as f:
+    f.write(decoded)
+
+assets = FH.read_portfolio_csv("portfolio.csv") # Create asset dict
+
+portfolio = P(assets) # Create a portfolio object
 
 # Gather statistics to show
 statistics = {}

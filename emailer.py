@@ -1,6 +1,6 @@
 import smtplib
 from email.message import EmailMessage
-from file_handler import FileHandler as FH
+import os
 
 class Emailer:
     """Contains functions for composing and sending emails."""
@@ -20,11 +20,10 @@ class Emailer:
             f"Daily Best Performer: {self.contents.get('best_performer')}\n"
         )
 
-        # Gather sender and recipient
-        json_config = FH.read_json("config.json")
-        sender = json_config.get("sender_email")
-        password = json_config.get("sender_password")
-        recipient = json_config.get("receiver_email")
+        # Gather sender's email & password and recipient's email
+        sender = os.getenv('SENDER_EMAIL')
+        password = os.getenv('SENDER_PASSWORD')
+        recipient = os.getenv('RECEIVER_EMAIL')
 
         # sender == the sender's email address
         # recipient == the recipient's email address
