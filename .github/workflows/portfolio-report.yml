@@ -17,7 +17,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.13.5'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
@@ -28,6 +28,6 @@ jobs:
       env:
         PORTFOLIO_B64: ${{ secrets.PORTFOLIO_B64 }}
         SENDEREMAIL: ${{ secrets.SENDER_EMAIL }}
-        SENDER_PASSOWRD: ${{ secrets.SENDER_PASSWORD }}
+        SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
         RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
       run: python main.py
