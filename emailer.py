@@ -1,5 +1,4 @@
 import smtplib
-import json
 from email.message import EmailMessage
 from file_handler import FileHandler as FH
 
