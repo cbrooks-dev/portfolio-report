@@ -14,9 +14,9 @@ class Emailer:
         # Create a text/plain message
         msg = EmailMessage()
         msg.set_content(
-            f"Total Portfolio Worth: ${int(self.contents.get('sum_of_assets'))} USD\n"
-            f"Daily % Increase: {int(self.contents.get('percent_increase')) * 100}%\n"
-            f"Daily $ Increase: ${int(self.contents.get('dollar_increase'))} USD\n"
+            f"Total Portfolio Worth: ${round(self.contents.get('sum_of_assets'), 2)} USD\n"
+            f"Daily % Increase: {round(self.contents.get('percent_increase') * 100, 2)}%\n"
+            f"Daily $ Increase: ${round(self.contents.get('dollar_increase'), 2)} USD\n"
             f"Daily Best Performer: {self.contents.get('best_performer')}\n"
         )
 
