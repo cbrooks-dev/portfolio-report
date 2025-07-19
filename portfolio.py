@@ -5,7 +5,10 @@ class Portfolio():
 
 
     def __init__(self, portfolio: dict[str, float]):
-        """Constructs the investor's portfolio."""
+        """
+        Constructs the investor's portfolio from a
+        dict like: {ticker_symbol: shares_owned}
+        """
 
         self.portfolio = portfolio
     
@@ -33,6 +36,9 @@ class Portfolio():
 
         current_sum = self.get_sum()
         open_sum = self.get_sum("open")
+
+        if current_sum == 0: # Avoid division by 0
+            return current_sum
         
         return (current_sum - open_sum) / current_sum
 
