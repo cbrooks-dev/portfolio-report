@@ -38,4 +38,3 @@ class Emailer:
             server.ehlo()
             server.login(sender, password)  # App password only
             server.send_message(msg)
-            server.quit()
