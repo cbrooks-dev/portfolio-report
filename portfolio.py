@@ -47,25 +47,20 @@ class Portfolio():
                 
     
     def asset_of_the_day(self) -> str:
-        """Get the asset of the day based on % increase."""
+        """Returns the asset with the highest % increase today."""
 
-        asset_of_the_day = ""
+        best_ticker = None
+        best_increase = float('-inf')
 
-        for ticker in self.portfolio.keys():
-            if (asset_of_the_day == ""):
-                asset_of_the_day = ticker
-                continue # Skip if first asset
+        for ticker in self.portfolio:
             asset = yf.Ticker(ticker).fast_info
-            top_earner = yf.Ticker(asset_of_the_day).fast_info
             open_price = float(asset.open)
             current_price = float(asset.last_price)
-            increase = (current_price - open_price) / current_price
-            asset_of_the_day_open_price = float(top_earner.open)
-            asset_of_the_day_current_price = float(top_earner.last_price)
-            asset_of_the_day_increase = ((asset_of_the_day_current_price -
-                                         asset_of_the_day_open_price)
-                                         / asset_of_the_day_current_price)
-            if increase > asset_of_the_day_increase:
-                asset_of_the_day = ticker
-        
-        return asset_of_the_day
+            if open_price == 0:
+                continue  # Avoid division by zero
+            increase = (current_price - open_price) / open_price
+            if increase > best_increase:
+                best_increase = increase
+                best_ticker = ticker
+
+        return best_ticker if best_ticker is not None else ""
