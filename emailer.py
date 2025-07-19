@@ -1,6 +1,8 @@
 import smtplib
 from email.message import EmailMessage
-import os
+import os, dotenv
+
+dotenv.load_dotenv()
 
 class Emailer:
     """Contains functions for composing and sending emails."""

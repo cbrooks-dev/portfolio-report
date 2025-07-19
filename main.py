@@ -1,7 +1,9 @@
 from portfolio import Portfolio as P
 from emailer import Emailer as E
 from file_handler import FileHandler as FH
-import os, base64
+import os, base64, dotenv
+
+dotenv.load_dotenv()
 
 # Decode and recreate csv file at runtime
 b64_data = os.environ["PORTFOLIO_B64"]
